@@ -24,25 +24,28 @@ class linked_list_node:
         
 class MyLinkedList:
     
-    def __init(self, node):
+    def __init__(self, node):
         self.head = node
         self.curr = node
-        self.node_list =[node]
+
+    def reset_curr(self):
+        self.curr = self.head
         
     def get(self, index):
-        i = 0
-        while i <= index:
-            if self.curr.next == None:
-                return -1
-            else:
-                self.curr = self.curr.next
-            i += 1
-            return self.curr.value
+        i = 1
+        while i <=index and self.curr.next != None:
+            self.curr = self.curr.next
+            i+=1
+        value = -1
+        if i-1 == index:
+            value = self.curr.value
+        self.reset_curr()
+        return value
         
-    def addAtHead(self, val):
-        node = linked_list_node(val)
-        node.next = self.head
-        self.node_list.append(node)
+    def addAtHead(self, node):
+        temp_node = self.head
         self.head = node
+        self.head.next = temp_node
+        self.reset_curr()
         
     
