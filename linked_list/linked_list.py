@@ -48,4 +48,9 @@ class MyLinkedList:
         self.head.next = temp_node
         self.reset_curr()
         
+    def addAtTail(self, node):
+        while self.curr.next!= None:
+            self.curr = self.curr.next
+        self.curr.next = node
+        self.reset_curr()
     
